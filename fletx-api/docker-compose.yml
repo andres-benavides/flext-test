@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    image: postgres:16
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: flext_db
+      POSTGRES_USER: user_db
+      POSTGRES_PASSWORD: test_123
+    ports:
+      - "5433:5432"
+
+  rails_api:
+    volumes:
+      - .:/app
+      - ./config/master.key:/app/config/master.key
+    build: .
+    container_name: rails_api
+    ports:
+      - "3000:3000"
+    command: ["bash", "-c", "bundle exec rails s -b 0.0.0.0"]
+volumes:
+  pgdata:

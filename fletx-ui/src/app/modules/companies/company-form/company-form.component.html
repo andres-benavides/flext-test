@@ -1,0 +1,68 @@
+<div class="form-wrapper">
+  <h2>{{ isEditMode ? 'Editar Compañía' : 'Crear Compañía' }}</h2>
+
+  <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+
+    <!-- Nombre -->
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <!-- Sector -->
+    <mat-form-field appearance="fill">
+      <mat-label>Sector</mat-label>
+      <input matInput formControlName="sector">
+    </mat-form-field>
+
+    <!-- Teléfono -->
+    <mat-form-field appearance="fill">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+
+    <!-- Dirección -->
+    <mat-form-field appearance="fill">
+      <mat-label>Dirección</mat-label>
+      <input matInput formControlName="address">
+    </mat-form-field>
+
+    <!-- Activos -->
+    <mat-form-field appearance="fill">
+      <mat-label>Activos</mat-label>
+      <input matInput type="number" formControlName="assets">
+    </mat-form-field>
+
+    <!-- Pasivos -->
+    <mat-form-field appearance="fill">
+      <mat-label>Pasivos</mat-label>
+      <input matInput type="number" formControlName="liabilities">
+    </mat-form-field>
+
+    <!-- Departamento -->
+    <mat-form-field appearance="fill">
+      <mat-label>Departamento</mat-label>
+      <mat-select formControlName="department_id" (selectionChange)="onDepartmentChange($event.value)">
+        <mat-option *ngFor="let dept of departments" [value]="dept.id">
+          {{ dept.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Ciudad -->
+    <mat-form-field appearance="fill">
+      <mat-label>Ciudad</mat-label>
+      <mat-select formControlName="city_id">
+        <mat-option *ngFor="let city of cities" [value]="city.id">
+          {{ city.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Botón -->
+    <button mat-raised-button color="primary" type="submit">
+      {{ isEditMode ? 'Actualizar Compañía' : 'Crear Compañía' }}
+    </button>
+
+  </form>
+</div>
