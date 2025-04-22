@@ -1,11 +1,35 @@
 .dashboard-container {
   height: 100vh;
 }
+
 .sidenav {
-  width: 200px;
-  background-color: #f8f9fa;
+  width: 240px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #e0e0e0;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
 }
-.active {
+
+.sidenav-header {
+  text-align: center;
+  padding: 1rem;
   font-weight: bold;
-  color: #1976d2;
+  font-size: 1.2rem;
+}
+
+mat-nav-list a {
+  justify-content: center;
+  text-align: center;
+  font-weight: 500;
+}
+
+mat-divider {
+  margin: 0;
+}
+
+.content {
+  padding: 24px;
+  background-color: #fff;
+  min-height: 100%;
 }

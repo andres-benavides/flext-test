@@ -1,7 +1,32 @@
 .login-container {
-  max-width: 400px;
-  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e8edf3;
   padding: 16px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.login-form {
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-card {
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #dadce0;
+}
+
+.login-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 1.5rem;
 }
 
 .full-width {
@@ -9,10 +34,20 @@
 }
 
 .error-message {
-  color: red;
-  margin-bottom: 10px;
+  color: #d32f2f;
+  font-weight: 500;
+  text-align: center;
+  margin: 10px 0;
 }
 
-.login-container form{
-  padding: 5px;
+button[mat-raised-button] {
+  text-transform: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 0;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover:not([disabled]) {
+    background-color: #1565c0;
+  }
 }

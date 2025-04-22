@@ -6,11 +6,14 @@ export const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'login',
-    loadComponent: () => import('./modules/auth/login/login.component').then(m => m.LoginComponent)
+    loadComponent: () =>
+      import('./modules/auth/login/login.component').then(
+        (m) => m.LoginComponent
+      ),
   },
   {
     path: 'dashboard',
@@ -19,21 +22,35 @@ export const routes: Routes = [
     children: [
       {
         path: 'companies',
-        loadChildren: () => import('./modules/companies/companies.module').then(m => m.CompaniesModule)
+        loadChildren: () =>
+          import('./modules/companies/companies.module').then(
+            (m) => m.CompaniesModule
+          ),
       },
       {
         path: 'products',
-        loadChildren: () => import('./modules/products/products.module').then(m => m.ProductsModule)
+        loadChildren: () =>
+          import('./modules/products/products.module').then(
+            (m) => m.ProductsModule
+          ),
       },
       {
         path: 'users',
-        loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
+        loadChildren: () =>
+          import('./modules/users/users.module').then((m) => m.UsersModule),
       },
       {
         path: '',
         redirectTo: 'companies',
-        pathMatch: 'full'
-      }
-    ]
-  }
+        pathMatch: 'full',
+      },
+    ],
+  },
+  {
+    path: 'forbidden',
+    loadComponent: () =>
+      import('./layout/forbidden/forbidden.component').then(
+        (m) => m.ForbiddenComponent
+      ),
+  },
 ];

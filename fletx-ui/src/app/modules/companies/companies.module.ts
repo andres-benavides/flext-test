@@ -8,13 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 
 import { CompaniesRoutingModule } from './companies-routing.module';
-import { CompaniesComponent } from './companies.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from '../../core/interceptors/auth.interceptor';
-import { CompaniesService } from '../../core/services/companies/companies.service';
 
 @NgModule({
-  declarations: [CompaniesComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

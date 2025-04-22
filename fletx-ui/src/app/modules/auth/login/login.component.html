@@ -1,25 +1,25 @@
 <div class="login-container">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <mat-card>
-      <mat-card-title>Login-in</mat-card-title>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <mat-card class="login-card">
+      <mat-card-title class="login-title">Iniciar sesión</mat-card-title>
 
-      <mat-form-field appearance="fill" class="full-width">
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" type="email" />
         <mat-error *ngIf="loginForm.get('email')?.hasError('required')">El correo es obligatorio</mat-error>
         <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Correo no válido</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Password</mat-label>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
         <input matInput formControlName="password" type="password" />
         <mat-error *ngIf="loginForm.get('password')?.hasError('required')">La contraseña es obligatoria</mat-error>
       </mat-form-field>
 
       <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
-      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
-        Submit
+      <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="loginForm.invalid">
+        Ingresar
       </button>
     </mat-card>
   </form>

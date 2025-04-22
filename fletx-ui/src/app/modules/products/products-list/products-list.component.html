@@ -1,0 +1,41 @@
+<div class="products-wrapper">
+
+  <table mat-table [dataSource]="products" class="mat-elevation-z8" >
+
+    <!-- Nombre -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let prodcut">{{ prodcut.name }}</td>
+    </ng-container>
+
+    <!-- Categoria -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>Categoria</th>
+      <td mat-cell *matCellDef="let prodcut">{{ prodcut.category }}</td>
+    </ng-container>
+
+     <!-- Precio -->
+     <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Precio</th>
+      <td mat-cell *matCellDef="let prodcut">{{ prodcut.price }}</td>
+    </ng-container>
+
+     <!-- Compañia -->
+     <ng-container matColumnDef="company">
+      <th mat-header-cell *matHeaderCellDef>Compañia</th>
+      <td mat-cell *matCellDef="let prodcut">{{ prodcut.company.name }}</td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let prodcut">
+        <button mat-button (click)="onEdit(prodcut)">Editar</button>
+        <button mat-button color="warn" (click)="onDelete(prodcut)">Eliminar</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['name', 'category','price','company', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['name', 'category','price','company', 'actions'];"></tr>
+  </table>
+</div>

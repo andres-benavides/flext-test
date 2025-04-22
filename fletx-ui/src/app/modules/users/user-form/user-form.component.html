@@ -1,0 +1,68 @@
+<div class="form-wrapper">
+  <h2>{{ isEditMode ? 'Editar Usuario' : 'Crear Usuario' }}</h2>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <!-- Nombre -->
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="first_name">
+    </mat-form-field>
+
+    <!-- Apellido -->
+    <mat-form-field appearance="fill">
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="last_name">
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+
+    <ng-container *ngIf="!isEditMode">
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+    </ng-container>
+
+    <!-- Compañía -->
+    <mat-form-field appearance="fill">
+      <mat-label>Compañía</mat-label>
+      <mat-select formControlName="company_id">
+        <mat-option *ngFor="let dept of companies" [value]="dept.id">
+          {{ dept.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Cargo / Posición -->
+    <mat-form-field appearance="fill">
+      <mat-label>Cargo</mat-label>
+      <mat-select formControlName="position">
+        <mat-option value="Manager">Manager</mat-option>
+        <mat-option value="User">User</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Teléfono -->
+    <mat-form-field appearance="fill">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+
+    <!-- Salario -->
+    <mat-form-field appearance="fill">
+      <mat-label>Salario</mat-label>
+      <input matInput type="number" formControlName="salary">
+    </mat-form-field>
+
+    <!-- Botón -->
+    <button mat-raised-button color="primary" type="submit">
+      {{ isEditMode ? 'Actualizar Usuario' : 'Crear Usuario' }}
+    </button>
+
+  </form>
+</div>

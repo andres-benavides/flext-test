@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-companies-list',
+  standalone: true,
   templateUrl: './companies-list.component.html',
   styleUrls: ['./companies-list.component.scss'],
   imports: [MatTableModule, MatButtonModule],
@@ -14,7 +15,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CompaniesListComponent implements OnInit {
   private readonly companiesRequest = inject(CompaniesService);
   private readonly router = inject(Router);
-  private readonly activatedRoute = inject(ActivatedRoute);
 
   companies: Company[] = [];
   isLoading = false;
@@ -38,14 +38,10 @@ export class CompaniesListComponent implements OnInit {
     this.router.navigate(['/dashboard/companies/edit', company.id]);
   }
 
-  onCreate() {
-    this.router.navigate(['create'], { relativeTo: this.activatedRoute });
-  }
-
   async onDelete(company: Company) {
     if (confirm(`¿Estás seguro que deseas eliminar a ${company.name}?`)) {
       try {
-        // await this.companiesRequest.delete(company.id);
+        await this.companiesRequest.delete(company.id);
         this.companies = this.companies.filter((c) => c.id !== company.id);
       } catch (error) {
         alert('Error al eliminar la compañía');

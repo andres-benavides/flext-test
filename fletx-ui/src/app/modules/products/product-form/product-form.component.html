@@ -1,0 +1,41 @@
+<div class="form-wrapper">
+  <h2>{{ isEditMode ? 'Editar Producto' : 'Crear Producto' }}</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+    <!-- Nombre -->
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <!-- Categoria -->
+    <mat-form-field appearance="fill">
+      <mat-label>Categoria</mat-label>
+      <input matInput formControlName="category">
+    </mat-form-field>
+
+    <!-- Precio -->
+    <mat-form-field appearance="fill">
+      <mat-label>Precio</mat-label>
+      <input matInput formControlName="price">
+    </mat-form-field>
+
+    <!-- Compañia -->
+    <mat-form-field appearance="fill">
+      <mat-label>Compañia</mat-label>
+      <mat-select formControlName="company_id">
+        <mat-option *ngFor="let dept of companies" [value]="dept.id">
+          {{ dept.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <!-- Botón -->
+    <button mat-raised-button color="primary" type="submit">
+      {{ isEditMode ? 'Actualizar Producto' : 'Crear Producto' }}
+    </button>
+
+  </form>
+</div>

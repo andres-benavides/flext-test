@@ -2,10 +2,14 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      post '/login', to: 'users#login'
-      delete '/logout', to: 'users#logout'
+     # Autenticación
+      post '/login', to: 'sessions#create'
+      delete '/logout', to: 'sessions#destroy'
+
+      resources :users
 
       resources :companies
+      resources :products
 
       resources :departments, only: [:index] do
         resources :cities, only: [:index]

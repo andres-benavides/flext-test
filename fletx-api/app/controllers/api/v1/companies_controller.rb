@@ -2,6 +2,8 @@
 module Api
   module V1
     class CompaniesController < ApplicationController
+      include AuthenticateRequest
+      
       def index
         companies = Companies::FetchAll.call
         render json: companies
@@ -35,6 +37,10 @@ module Api
         else
           render json: { error: 'Compañía no encontrada' }, status: :not_found
         end
+      end
+
+      def destroy
+        Company.find(params[:id]).destroy
       end
 
       private
